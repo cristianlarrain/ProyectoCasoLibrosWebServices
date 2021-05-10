@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion.CasoLibros", "Presentacion.CasoLibros\Presentacion.CasoLibros.csproj", "{523092B6-88CD-4BEA-9DBD-C576C6B907AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EECD6DB1-DE3E-46EF-B481-3E4C07C7A3F8} = {EECD6DB1-DE3E-46EF-B481-3E4C07C7A3F8}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioWeb.CasoLibros", "ServicioWeb.CasoLibros\ServicioWeb.CasoLibros.csproj", "{EECD6DB1-DE3E-46EF-B481-3E4C07C7A3F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{523092B6-88CD-4BEA-9DBD-C576C6B907AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{523092B6-88CD-4BEA-9DBD-C576C6B907AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{523092B6-88CD-4BEA-9DBD-C576C6B907AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{523092B6-88CD-4BEA-9DBD-C576C6B907AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EECD6DB1-DE3E-46EF-B481-3E4C07C7A3F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECD6DB1-DE3E-46EF-B481-3E4C07C7A3F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECD6DB1-DE3E-46EF-B481-3E4C07C7A3F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECD6DB1-DE3E-46EF-B481-3E4C07C7A3F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4C2221A3-B47F-45C6-A69D-6A567F050B1E}
+	EndGlobalSection
+EndGlobal
