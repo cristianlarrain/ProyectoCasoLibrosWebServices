@@ -15,8 +15,6 @@ namespace ServicioWeb.CasoLibros
     // [System.Web.Script.Services.ScriptService]
     public class ConsutaLibros : WebService
     {
-
-
         [WebMethod]
         public string ConsultarLibro(int Codigo_Libro)
         {
@@ -31,7 +29,6 @@ namespace ServicioWeb.CasoLibros
                 return "0";
             }
         }
-
 
         [WebMethod]
         public string ConsultarStock(int Codigo_Libro)
@@ -59,12 +56,10 @@ namespace ServicioWeb.CasoLibros
         [WebMethod]
         public DataSet ConsultarLibroDB(int Codigo_Libro)
         {
-
             var comando = ConfiguracionDatos.CrearComando();
             comando.CommandText = "SELECT * FROM PRODUCTOS WHERE CODIGO_PRODUCTO = '" + Codigo_Libro + "'";
             DataSet dt = ConfiguracionDatos.CrearDataSet(comando);
             return dt;
-
         }
 
     }
