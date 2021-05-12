@@ -10,76 +10,83 @@ namespace Presentacion.CasoLibros
         {
             ListarProductos();
         }
+
+        public string clave = "tokenb42636e9261f";
+
         private void ListarProductos()
         {
-            ServiceWeb_CasoLibros.ConsutaLibrosSoapClient servicio = new ServiceWeb_CasoLibros.ConsutaLibrosSoapClient(); 
-                
-            DataSet DS = servicio.ListarProductos();
-            GridView1.DataSource = DS;
-            GridView1.DataBind();
+            ServiceWeb_CasoLibros.ConsutaLibrosSoapClient servicio = new ServiceWeb_CasoLibros.ConsutaLibrosSoapClient();
+            ServiceWeb_CasoLibros.UserDetails token = new ServiceWeb_CasoLibros.UserDetails
+            {
+                AccessKey = clave
+            };
+
+            DataSet DS = servicio.ListarProductos(token);
+            GrillaListarLibros.DataSource = DS;
+            GrillaListarLibros.DataBind();
         }
 
-        protected void btn_BuscarLibro_Click(object sender, EventArgs e)
+
+        protected void btn_ConsultarProducto(object sender, EventArgs e)
         {
             try
             {
 
-                lbl_Resultado.Text = string.Empty;
-                var id_libro = int.Parse(txt_IdCodigo.Text);
-
-                using (ServiceWeb_CasoLibros.ConsutaLibrosSoapClient cliente = new ServiceWeb_CasoLibros.ConsutaLibrosSoapClient())
-                {
-
-                   var Resultado_ConsultaLibro = cliente.ConsultarLibro(id_libro);
-
-                    if (Resultado_ConsultaLibro == "1")
-                    {
-                        lbl_Resultado.Text = "Stock Disponible";
-                        lbl_Resultado.ForeColor = System.Drawing.Color.DarkGreen;
-                    }
-                    else
-                    {
-                        lbl_Resultado.Text = "Sin Stock Disponible";
-                        lbl_Resultado.ForeColor = System.Drawing.Color.Red;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-                lbl_Resultado.Text = ex.ToString();
-            }
-
-
-        }
-
-        protected void btn_ConsultarStock(object sender, EventArgs e)
-        {
-            try
-            {
-
-                lbl_resultado2.Text = string.Empty;
+                lbl_ResultadoBusquedaLibro.Text = string.Empty;
 
                 var id_libro = int.Parse(txtCodigoLibro.Text);
 
-                using (ServiceWeb_CasoLibros.ConsutaLibrosSoapClient cliente = new ServiceWeb_CasoLibros.ConsutaLibrosSoapClient())
+                using (ServiceWeb_CasoLibros.ConsutaLibrosSoapClient servicio = new ServiceWeb_CasoLibros.ConsutaLibrosSoapClient())
                 {
-     
-                    DataSet DS = cliente.ConsultarLibroDB(id_libro);
-                    GridView1.DataSource = DS;
-                    GridView1.DataBind();
+
+                    DataSet DS = servicio.ConsultarLibroDB(id_libro);
+                    GrillaListarLibros.DataSource = DS;
+                    GrillaListarLibros.DataBind();
 
                 }
             }
             catch (Exception ex)
             {
 
-                lbl_resultado2.Text = ex.ToString();
+                lbl_ResultadoBusquedaLibro.Text = ex.ToString();
             }
 
         }
 
 
+        protected void btn_BuscarLibro_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+
+            //    lbl_Resultado.Text = string.Empty;
+            //    var id_libro = int.Parse(txt_IdCodigo.Text);
+
+            //    using (ServiceWeb_CasoLibros.ConsutaLibrosSoapClient cliente = new ServiceWeb_CasoLibros.ConsutaLibrosSoapClient())
+            //    {
+
+            //       var Resultado_ConsultaLibro = cliente.ConsultarLibro(id_libro);
+
+            //        if (Resultado_ConsultaLibro == "1")
+            //        {
+            //            lbl_Resultado.Text = "Stock Disponible";
+            //            lbl_Resultado.ForeColor = System.Drawing.Color.DarkGreen;
+            //        }
+            //        else
+            //        {
+            //            lbl_Resultado.Text = "Sin Stock Disponible";
+            //            lbl_Resultado.ForeColor = System.Drawing.Color.Red;
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    lbl_Resultado.Text = ex.ToString();
+            //}
+
+
+        }
 
 
     }

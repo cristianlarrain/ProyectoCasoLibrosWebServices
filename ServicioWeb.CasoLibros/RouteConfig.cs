@@ -1,13 +1,18 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Web;
 using System.Web.Routing;
+using Microsoft.AspNet.FriendlyUrls;
 
 namespace ServicioWeb.CasoLibros
 {
-    internal class RouteConfig
+    public static class RouteConfig
     {
-        internal static void RegisterRoutes(RouteCollection routes)
+        public static void RegisterRoutes(RouteCollection routes)
         {
-            throw new NotImplementedException();
+            var settings = new FriendlyUrlSettings();
+            settings.AutoRedirectMode = RedirectMode.Permanent;
+            routes.EnableFriendlyUrls(settings);
         }
     }
 }

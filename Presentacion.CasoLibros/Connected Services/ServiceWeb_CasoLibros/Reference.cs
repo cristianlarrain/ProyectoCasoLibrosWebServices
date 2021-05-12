@@ -16,26 +16,13 @@ namespace Presentacion.CasoLibros.ServiceWeb_CasoLibros {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceWeb_CasoLibros.ConsutaLibrosSoap")]
     public interface ConsutaLibrosSoap {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsultarLibro", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string ConsultarLibro(int Codigo_Libro);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsultarLibro", ReplyAction="*")]
-        System.Threading.Tasks.Task<string> ConsultarLibroAsync(int Codigo_Libro);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsultarStock", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string ConsultarStock(int Codigo_Libro);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsultarStock", ReplyAction="*")]
-        System.Threading.Tasks.Task<string> ConsultarStockAsync(int Codigo_Libro);
-        
+        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ListarProductosRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarProductos", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Data.DataSet ListarProductos();
+        Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosResponse ListarProductos(Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarProductos", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> ListarProductosAsync();
+        System.Threading.Tasks.Task<Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosResponse> ListarProductosAsync(Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsultarLibroDB", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -43,6 +30,86 @@ namespace Presentacion.CasoLibros.ServiceWeb_CasoLibros {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsultarLibroDB", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataSet> ConsultarLibroDBAsync(int Codigo_Libro);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class UserDetails : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string accessKeyField;
+        
+        private System.Xml.XmlAttribute[] anyAttrField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
+        public string AccessKey {
+            get {
+                return this.accessKeyField;
+            }
+            set {
+                this.accessKeyField = value;
+                this.RaisePropertyChanged("AccessKey");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
+        public System.Xml.XmlAttribute[] AnyAttr {
+            get {
+                return this.anyAttrField;
+            }
+            set {
+                this.anyAttrField = value;
+                this.RaisePropertyChanged("AnyAttr");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarProductos", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ListarProductosRequest {
+        
+        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
+        public Presentacion.CasoLibros.ServiceWeb_CasoLibros.UserDetails UserDetails;
+        
+        public ListarProductosRequest() {
+        }
+        
+        public ListarProductosRequest(Presentacion.CasoLibros.ServiceWeb_CasoLibros.UserDetails UserDetails) {
+            this.UserDetails = UserDetails;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarProductosResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ListarProductosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public System.Data.DataSet ListarProductosResult;
+        
+        public ListarProductosResponse() {
+        }
+        
+        public ListarProductosResponse(System.Data.DataSet ListarProductosResult) {
+            this.ListarProductosResult = ListarProductosResult;
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -72,28 +139,27 @@ namespace Presentacion.CasoLibros.ServiceWeb_CasoLibros {
                 base(binding, remoteAddress) {
         }
         
-        public string ConsultarLibro(int Codigo_Libro) {
-            return base.Channel.ConsultarLibro(Codigo_Libro);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosResponse Presentacion.CasoLibros.ServiceWeb_CasoLibros.ConsutaLibrosSoap.ListarProductos(Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosRequest request) {
+            return base.Channel.ListarProductos(request);
         }
         
-        public System.Threading.Tasks.Task<string> ConsultarLibroAsync(int Codigo_Libro) {
-            return base.Channel.ConsultarLibroAsync(Codigo_Libro);
+        public System.Data.DataSet ListarProductos(Presentacion.CasoLibros.ServiceWeb_CasoLibros.UserDetails UserDetails) {
+            Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosRequest inValue = new Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosRequest();
+            inValue.UserDetails = UserDetails;
+            Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosResponse retVal = ((Presentacion.CasoLibros.ServiceWeb_CasoLibros.ConsutaLibrosSoap)(this)).ListarProductos(inValue);
+            return retVal.ListarProductosResult;
         }
         
-        public string ConsultarStock(int Codigo_Libro) {
-            return base.Channel.ConsultarStock(Codigo_Libro);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosResponse> Presentacion.CasoLibros.ServiceWeb_CasoLibros.ConsutaLibrosSoap.ListarProductosAsync(Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosRequest request) {
+            return base.Channel.ListarProductosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<string> ConsultarStockAsync(int Codigo_Libro) {
-            return base.Channel.ConsultarStockAsync(Codigo_Libro);
-        }
-        
-        public System.Data.DataSet ListarProductos() {
-            return base.Channel.ListarProductos();
-        }
-        
-        public System.Threading.Tasks.Task<System.Data.DataSet> ListarProductosAsync() {
-            return base.Channel.ListarProductosAsync();
+        public System.Threading.Tasks.Task<Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosResponse> ListarProductosAsync(Presentacion.CasoLibros.ServiceWeb_CasoLibros.UserDetails UserDetails) {
+            Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosRequest inValue = new Presentacion.CasoLibros.ServiceWeb_CasoLibros.ListarProductosRequest();
+            inValue.UserDetails = UserDetails;
+            return ((Presentacion.CasoLibros.ServiceWeb_CasoLibros.ConsutaLibrosSoap)(this)).ListarProductosAsync(inValue);
         }
         
         public System.Data.DataSet ConsultarLibroDB(int Codigo_Libro) {

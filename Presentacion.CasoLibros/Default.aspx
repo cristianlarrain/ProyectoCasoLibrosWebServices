@@ -1,65 +1,72 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Presentacion.CasoLibros._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
+    <style>
+        .espacio {
+            padding: 20px;
+        }
+        .espacio2 {
+            padding: 10px;
+        }
+    </style>
     <link href="Static/Css/estilos.css" rel="stylesheet" />
 
     <div class="jumbotron">
         <h1>Libreria Virtual</h1>
         <div class="row">
-            <div class="col-sm-6 bob">
+            <div class="col-sm-12 bob">
 
-                <p class="lead">Buscar Libros Por un Codigo</p>
+                <p class="lead">Buscar Libro por Código</p>
+                <asp:TextBox ID="txtCodigoLibro" TextMode="Number" runat="server" Width="223px" Wrap="False" ></asp:TextBox><br />
                 <br />
-                <asp:TextBox ID="txt_IdCodigo" TextMode="Number" runat="server" Width="223px"></asp:TextBox><br />
-                <br />
-                <asp:Button ID="btn_BuscarLibro" runat="server" Text="Buscar..." Width="227px" OnClick="btn_BuscarLibro_Click" />
-                <br />
-                <br />
-                <asp:Label ID="lbl_Resultado" disabled="disable" runat="server"></asp:Label>
+                <asp:Button ID="btn_BuscarLibro" runat="server" Text="Consultar..." Width="227px" OnClick="btn_ConsultarProducto" />
                 <br />
                 <br />
-            </div>
-            <div class="col-sm-6 bob">
-
-                <p class="lead">Consultar Stock Libro</p>
-                <br />
-                <asp:TextBox ID="txtCodigoLibro" TextMode="Number" runat="server" Width="223px"></asp:TextBox><br />
-                <br />
-                <asp:Button ID="btn_Consultar_stock" runat="server" Text="Consultar..." Width="227px" OnClick="btn_ConsultarStock" />
-                <br />
-                <br />
-                <asp:Label ID="lbl_resultado2" disabled="disable" runat="server"></asp:Label>
-                <br />
-                <br />
+                <asp:Label ID="lbl_ResultadoBusquedaLibro" disabled="disable" runat="server"></asp:Label>
             </div>
         </div>
 
-        <asp:GridView ID="GridView1" runat="server" CellPadding="3" GridLines="None"
-            BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellSpacing="10" AutoGenerateColumns="false" Width="100%">
+        <asp:GridView ID="GrillaListarLibros" runat="server"
+            CellSpacing="10"
+            GridLines="Vertical"
+            BackColor="White"
+            BorderColor="#DEDFDE"
+            BorderStyle="Solid"
+            BorderWidth="10px"
+            AutoGenerateColumns="False"
+            Width="100%"
+            ForeColor="Black">
+            <AlternatingRowStyle BackColor="White" />
             <Columns>
-                <asp:TemplateField HeaderText="Imagen">
-
+                <asp:TemplateField>
                     <ItemTemplate>
                         <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("IMAGEN_PRODUCTO") %>' Width="120px" />
-                        <asp:Label ID="codigo_PRODUCTO" runat="server" Text='<%# Eval("codigo_PRODUCTO") %>'></asp:Label>
-                        <asp:Label ID="nombre_PRODUCTO" runat="server" Text='<%# Eval("nombre_PRODUCTO") %>'></asp:Label>
-                        <br />
-                        <asp:Label ID="descripcion" runat="server" Text='<%# Eval("descripcion") %>'></asp:Label>
                     </ItemTemplate>
+                    <ItemStyle CssClass="espacio2" />
+                </asp:TemplateField>
+
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Label ID="NOMBRE_PRODUCTO" runat="server" Font-Size="Large" Font-Bold="false" ><%# Eval("NOMBRE_PRODUCTO") %></asp:Label>
+                        <br />
+                        <asp:Label ID="Label1" runat="server" Font-Size="Small" Font-Bold="true">SKU: <%# Eval("CODIGO_PRODUCTO") %></asp:Label>
+                        <br />
+                        <asp:Label ID="DESCRIPCION" runat="server" Font-Size="Small"><%# Eval("DESCRIPCION") %></asp:Label>
+                    </ItemTemplate>
+                    <ItemStyle CssClass="espacio" />
 
 
                 </asp:TemplateField>
             </Columns>
-            <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
-            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
-            <PagerStyle BackColor="#C6C3C6" ForeColor="Black" HorizontalAlign="Right" />
-            <RowStyle BackColor="#DEDFDE" ForeColor="Black" />
-            <SelectedRowStyle BackColor="#9471DE" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-            <SortedAscendingHeaderStyle BackColor="#594B9C" />
-            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-            <SortedDescendingHeaderStyle BackColor="#33276A" />
+            <FooterStyle BackColor="#CCCC99" />
+            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+            <RowStyle BackColor="#F7F7DE" />
+            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#FBFBF2" />
+            <SortedAscendingHeaderStyle BackColor="#848384" />
+            <SortedDescendingCellStyle BackColor="#EAEAD3" />
+            <SortedDescendingHeaderStyle BackColor="#575357" />
         </asp:GridView>
 
     </div>
