@@ -2,7 +2,6 @@
 {
     public class UserDetails : System.Web.Services.Protocols.SoapHeader
     {
-
         public string AccessKey { get; set; }
 
         public bool IsValid()

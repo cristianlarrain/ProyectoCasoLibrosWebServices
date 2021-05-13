@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cliente.CasoLibros", "Presentacion.CasoLibros\Cliente.CasoLibros.csproj", "{523092B6-88CD-4BEA-9DBD-C576C6B907AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion.CasoLibros", "Presentacion.CasoLibros\Presentacion.CasoLibros.csproj", "{523092B6-88CD-4BEA-9DBD-C576C6B907AB}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EECD6DB1-DE3E-46EF-B481-3E4C07C7A3F8} = {EECD6DB1-DE3E-46EF-B481-3E4C07C7A3F8}
 	EndProjectSection
