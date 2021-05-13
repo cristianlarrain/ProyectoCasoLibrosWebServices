@@ -14,7 +14,7 @@ namespace ServicioWeb.CasoLibros
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
 
-    public class wsLibros : WebService
+    public class WsLibros : WebService
     {
         public new UserDetails User;
 
@@ -34,36 +34,36 @@ namespace ServicioWeb.CasoLibros
 
         [WebMethod]
         /* consultar producto por codigo, conectados a una base de datos sql server */
-        public DataSet ConsultarLibro(int Codigo_Libro)
+        public DataSet ConsultarLibro(int codigoLibro)
         {
             var comando = ConfiguracionDatos.CrearComando();
-            comando.CommandText = "SELECT * FROM PRODUCTOS WHERE CODIGO_PRODUCTO = '" + Codigo_Libro + "'";
+            comando.CommandText = "SELECT * FROM PRODUCTOS WHERE CODIGO_PRODUCTO = '" + codigoLibro + "'";
             DataSet dt = ConfiguracionDatos.CrearDataSet(comando);
             return dt;
         }
 
         [WebMethod]
-        public void EliminarLibro(int CODIGO_PRODUCTO)
+        public void EliminarLibro(int codigoProducto)
         {
             var comando = ConfiguracionDatos.CrearComando();
-            comando.CommandText = "DELETE FROM PRODUCTOS WHERE CODIGO_PRODUCTO = " + CODIGO_PRODUCTO + " ";
+            comando.CommandText = "DELETE FROM PRODUCTOS WHERE CODIGO_PRODUCTO = " + codigoProducto + " ";
             ConfiguracionDatos.EjecutarComando(comando);
         }
 
         [WebMethod]
-        public void InsertarLibro(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION)
+        public void InsertarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion)
         {
             var comando = ConfiguracionDatos.CrearComando();
-            comando.CommandText = "INSERT INTO PRODUCTOS ( CODIGO_PRODUCTO , NOMBRE_PRODUCTO , IMAGEN_PRODUCTO , DESCRIPCION) VALUES ( '" + CODIGO_PRODUCTO + "', '" + NOMBRE_PRODUCTO + "' , '" + IMAGEN_PRODUCTO + "', '" + DESCRIPCION + "')";
+            comando.CommandText = "INSERT INTO PRODUCTOS ( CODIGO_PRODUCTO , NOMBRE_PRODUCTO , IMAGEN_PRODUCTO , DESCRIPCION) VALUES ( '" + codigoProducto + "', '" + nombreProducto + "' , '" + imagenProducto + "', '" + descripcion + "')";
 
             ConfiguracionDatos.EjecutarComando(comando);
         }
 
         [WebMethod]
-        public void ActualizarLibro(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION)
+        public void ActualizarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion)
         {
             var comando = ConfiguracionDatos.CrearComando();
-            comando.CommandText = "UPDATE PRODUCTOS SET NOMBRE_PRODUCTO = '" + NOMBRE_PRODUCTO + "' , IMAGEN_PRODUCTO = '" + IMAGEN_PRODUCTO + "' , DESCRIPCION = '" + DESCRIPCION + "' WHERE  CODIGO_PRODUCTO = '" + CODIGO_PRODUCTO + "'";
+            comando.CommandText = "UPDATE PRODUCTOS SET NOMBRE_PRODUCTO = '" + nombreProducto + "' , IMAGEN_PRODUCTO = '" + imagenProducto + "' , DESCRIPCION = '" + descripcion + "' WHERE  CODIGO_PRODUCTO = '" + codigoProducto + "'";
             ConfiguracionDatos.EjecutarComando(comando);
         }
 

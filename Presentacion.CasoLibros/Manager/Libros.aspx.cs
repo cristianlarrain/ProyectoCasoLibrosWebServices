@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Presentacion.CasoLibros.Manager
 {
@@ -22,14 +16,14 @@ namespace Presentacion.CasoLibros.Manager
 
                 lblResultado.Text = string.Empty;
 
-                int CODIGO_PRODUCTO = int.Parse(txtCodigo.Text);
-                string NOMBRE_PRODUCTO = txtTitulo.Text;
-                string IMAGEN_PRODUCTO = txtImagen.Text;
-                string DESCRIPCION = txtReseña.Text;
+                int codigoProducto = int.Parse(txtCodigo.Text);
+                string nombreProducto = txtTitulo.Text;
+                string imagenProducto = txtImagen.Text;
+                string descripcion = txtReseña.Text;
 
-                using (wsLibros.wsLibrosSoapClient cliente = new wsLibros.wsLibrosSoapClient())
+                using (wsLibros.WsLibrosSoapClient cliente = new wsLibros.WsLibrosSoapClient())
                 {
-                    cliente.InsertarLibro(CODIGO_PRODUCTO, NOMBRE_PRODUCTO, IMAGEN_PRODUCTO, DESCRIPCION);
+                    cliente.InsertarLibro(codigoProducto, nombreProducto, imagenProducto, descripcion);
                     lblResultado.Text = "Libro ingresado correctamente";
                 }
             }

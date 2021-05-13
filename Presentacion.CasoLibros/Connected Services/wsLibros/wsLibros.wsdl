@@ -29,7 +29,7 @@
       <s:element name="ConsultarLibro">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="Codigo_Libro" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="codigoLibro" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -50,7 +50,7 @@
       <s:element name="EliminarLibro">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CODIGO_PRODUCTO" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="codigoProducto" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -60,10 +60,10 @@
       <s:element name="InsertarLibro">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CODIGO_PRODUCTO" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_PRODUCTO" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="IMAGEN_PRODUCTO" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="codigoProducto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imagenProducto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -73,10 +73,10 @@
       <s:element name="ActualizarLibro">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CODIGO_PRODUCTO" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="NOMBRE_PRODUCTO" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="IMAGEN_PRODUCTO" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="DESCRIPCION" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="codigoProducto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imagenProducto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -118,7 +118,7 @@
   <wsdl:message name="ActualizarLibroSoapOut">
     <wsdl:part name="parameters" element="tns:ActualizarLibroResponse" />
   </wsdl:message>
-  <wsdl:portType name="wsLibrosSoap">
+  <wsdl:portType name="WsLibrosSoap">
     <wsdl:operation name="ListarLibros">
       <wsdl:input message="tns:ListarLibrosSoapIn" />
       <wsdl:output message="tns:ListarLibrosSoapOut" />
@@ -140,7 +140,7 @@
       <wsdl:output message="tns:ActualizarLibroSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="wsLibrosSoap" type="tns:wsLibrosSoap">
+  <wsdl:binding name="WsLibrosSoap" type="tns:WsLibrosSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="ListarLibros">
       <soap:operation soapAction="http://tempuri.org/ListarLibros" style="document" />
@@ -189,7 +189,7 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:binding name="wsLibrosSoap12" type="tns:wsLibrosSoap">
+  <wsdl:binding name="WsLibrosSoap12" type="tns:WsLibrosSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="ListarLibros">
       <soap12:operation soapAction="http://tempuri.org/ListarLibros" style="document" />
@@ -238,11 +238,11 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="wsLibros">
-    <wsdl:port name="wsLibrosSoap" binding="tns:wsLibrosSoap">
+  <wsdl:service name="WsLibros">
+    <wsdl:port name="WsLibrosSoap" binding="tns:WsLibrosSoap">
       <soap:address location="https://localhost:44394/wsLibros.asmx" />
     </wsdl:port>
-    <wsdl:port name="wsLibrosSoap12" binding="tns:wsLibrosSoap12">
+    <wsdl:port name="WsLibrosSoap12" binding="tns:WsLibrosSoap12">
       <soap12:address location="https://localhost:44394/wsLibros.asmx" />
     </wsdl:port>
   </wsdl:service>

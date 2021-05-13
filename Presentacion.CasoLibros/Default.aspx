@@ -3,7 +3,7 @@
     MasterPageFile="~/Site.Master" 
     AutoEventWireup="true" 
     CodeBehind="Default.aspx.cs" 
-    Inherits="Presentacion.CasoLibros._Default" %>
+    Inherits="Presentacion.CasoLibros.Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

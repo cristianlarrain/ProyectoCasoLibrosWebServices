@@ -13,8 +13,8 @@ namespace Presentacion.CasoLibros.wsLibros {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wsLibros.wsLibrosSoap")]
-    public interface wsLibrosSoap {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wsLibros.WsLibrosSoap")]
+    public interface WsLibrosSoap {
         
         // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ListarLibrosRequest tiene encabezados.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarLibros", ReplyAction="*")]
@@ -26,31 +26,31 @@ namespace Presentacion.CasoLibros.wsLibros {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsultarLibro", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Data.DataSet ConsultarLibro(int Codigo_Libro);
+        System.Data.DataSet ConsultarLibro(int codigoLibro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsultarLibro", ReplyAction="*")]
-        System.Threading.Tasks.Task<System.Data.DataSet> ConsultarLibroAsync(int Codigo_Libro);
+        System.Threading.Tasks.Task<System.Data.DataSet> ConsultarLibroAsync(int codigoLibro);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarLibro", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void EliminarLibro(int CODIGO_PRODUCTO);
+        void EliminarLibro(int codigoProducto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarLibro", ReplyAction="*")]
-        System.Threading.Tasks.Task EliminarLibroAsync(int CODIGO_PRODUCTO);
+        System.Threading.Tasks.Task EliminarLibroAsync(int codigoProducto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarLibro", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void InsertarLibro(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION);
+        void InsertarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarLibro", ReplyAction="*")]
-        System.Threading.Tasks.Task InsertarLibroAsync(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION);
+        System.Threading.Tasks.Task InsertarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarLibro", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void ActualizarLibro(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION);
+        void ActualizarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarLibro", ReplyAction="*")]
-        System.Threading.Tasks.Task ActualizarLibroAsync(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION);
+        System.Threading.Tasks.Task ActualizarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
     }
     
     /// <remarks/>
@@ -134,85 +134,85 @@ namespace Presentacion.CasoLibros.wsLibros {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface wsLibrosSoapChannel : Presentacion.CasoLibros.wsLibros.wsLibrosSoap, System.ServiceModel.IClientChannel {
+    public interface WsLibrosSoapChannel : Presentacion.CasoLibros.wsLibros.WsLibrosSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class wsLibrosSoapClient : System.ServiceModel.ClientBase<Presentacion.CasoLibros.wsLibros.wsLibrosSoap>, Presentacion.CasoLibros.wsLibros.wsLibrosSoap {
+    public partial class WsLibrosSoapClient : System.ServiceModel.ClientBase<Presentacion.CasoLibros.wsLibros.WsLibrosSoap>, Presentacion.CasoLibros.wsLibros.WsLibrosSoap {
         
-        public wsLibrosSoapClient() {
+        public WsLibrosSoapClient() {
         }
         
-        public wsLibrosSoapClient(string endpointConfigurationName) : 
+        public WsLibrosSoapClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public wsLibrosSoapClient(string endpointConfigurationName, string remoteAddress) : 
+        public WsLibrosSoapClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public wsLibrosSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public WsLibrosSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public wsLibrosSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public WsLibrosSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Presentacion.CasoLibros.wsLibros.ListarLibrosResponse Presentacion.CasoLibros.wsLibros.wsLibrosSoap.ListarLibros(Presentacion.CasoLibros.wsLibros.ListarLibrosRequest request) {
+        Presentacion.CasoLibros.wsLibros.ListarLibrosResponse Presentacion.CasoLibros.wsLibros.WsLibrosSoap.ListarLibros(Presentacion.CasoLibros.wsLibros.ListarLibrosRequest request) {
             return base.Channel.ListarLibros(request);
         }
         
         public System.Data.DataSet ListarLibros(Presentacion.CasoLibros.wsLibros.UserDetails UserDetails) {
             Presentacion.CasoLibros.wsLibros.ListarLibrosRequest inValue = new Presentacion.CasoLibros.wsLibros.ListarLibrosRequest();
             inValue.UserDetails = UserDetails;
-            Presentacion.CasoLibros.wsLibros.ListarLibrosResponse retVal = ((Presentacion.CasoLibros.wsLibros.wsLibrosSoap)(this)).ListarLibros(inValue);
+            Presentacion.CasoLibros.wsLibros.ListarLibrosResponse retVal = ((Presentacion.CasoLibros.wsLibros.WsLibrosSoap)(this)).ListarLibros(inValue);
             return retVal.ListarLibrosResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Presentacion.CasoLibros.wsLibros.ListarLibrosResponse> Presentacion.CasoLibros.wsLibros.wsLibrosSoap.ListarLibrosAsync(Presentacion.CasoLibros.wsLibros.ListarLibrosRequest request) {
+        System.Threading.Tasks.Task<Presentacion.CasoLibros.wsLibros.ListarLibrosResponse> Presentacion.CasoLibros.wsLibros.WsLibrosSoap.ListarLibrosAsync(Presentacion.CasoLibros.wsLibros.ListarLibrosRequest request) {
             return base.Channel.ListarLibrosAsync(request);
         }
         
         public System.Threading.Tasks.Task<Presentacion.CasoLibros.wsLibros.ListarLibrosResponse> ListarLibrosAsync(Presentacion.CasoLibros.wsLibros.UserDetails UserDetails) {
             Presentacion.CasoLibros.wsLibros.ListarLibrosRequest inValue = new Presentacion.CasoLibros.wsLibros.ListarLibrosRequest();
             inValue.UserDetails = UserDetails;
-            return ((Presentacion.CasoLibros.wsLibros.wsLibrosSoap)(this)).ListarLibrosAsync(inValue);
+            return ((Presentacion.CasoLibros.wsLibros.WsLibrosSoap)(this)).ListarLibrosAsync(inValue);
         }
         
-        public System.Data.DataSet ConsultarLibro(int Codigo_Libro) {
-            return base.Channel.ConsultarLibro(Codigo_Libro);
+        public System.Data.DataSet ConsultarLibro(int codigoLibro) {
+            return base.Channel.ConsultarLibro(codigoLibro);
         }
         
-        public System.Threading.Tasks.Task<System.Data.DataSet> ConsultarLibroAsync(int Codigo_Libro) {
-            return base.Channel.ConsultarLibroAsync(Codigo_Libro);
+        public System.Threading.Tasks.Task<System.Data.DataSet> ConsultarLibroAsync(int codigoLibro) {
+            return base.Channel.ConsultarLibroAsync(codigoLibro);
         }
         
-        public void EliminarLibro(int CODIGO_PRODUCTO) {
-            base.Channel.EliminarLibro(CODIGO_PRODUCTO);
+        public void EliminarLibro(int codigoProducto) {
+            base.Channel.EliminarLibro(codigoProducto);
         }
         
-        public System.Threading.Tasks.Task EliminarLibroAsync(int CODIGO_PRODUCTO) {
-            return base.Channel.EliminarLibroAsync(CODIGO_PRODUCTO);
+        public System.Threading.Tasks.Task EliminarLibroAsync(int codigoProducto) {
+            return base.Channel.EliminarLibroAsync(codigoProducto);
         }
         
-        public void InsertarLibro(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION) {
-            base.Channel.InsertarLibro(CODIGO_PRODUCTO, NOMBRE_PRODUCTO, IMAGEN_PRODUCTO, DESCRIPCION);
+        public void InsertarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
+            base.Channel.InsertarLibro(codigoProducto, nombreProducto, imagenProducto, descripcion);
         }
         
-        public System.Threading.Tasks.Task InsertarLibroAsync(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION) {
-            return base.Channel.InsertarLibroAsync(CODIGO_PRODUCTO, NOMBRE_PRODUCTO, IMAGEN_PRODUCTO, DESCRIPCION);
+        public System.Threading.Tasks.Task InsertarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
+            return base.Channel.InsertarLibroAsync(codigoProducto, nombreProducto, imagenProducto, descripcion);
         }
         
-        public void ActualizarLibro(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION) {
-            base.Channel.ActualizarLibro(CODIGO_PRODUCTO, NOMBRE_PRODUCTO, IMAGEN_PRODUCTO, DESCRIPCION);
+        public void ActualizarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
+            base.Channel.ActualizarLibro(codigoProducto, nombreProducto, imagenProducto, descripcion);
         }
         
-        public System.Threading.Tasks.Task ActualizarLibroAsync(int CODIGO_PRODUCTO, string NOMBRE_PRODUCTO, string IMAGEN_PRODUCTO, string DESCRIPCION) {
-            return base.Channel.ActualizarLibroAsync(CODIGO_PRODUCTO, NOMBRE_PRODUCTO, IMAGEN_PRODUCTO, DESCRIPCION);
+        public System.Threading.Tasks.Task ActualizarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
+            return base.Channel.ActualizarLibroAsync(codigoProducto, nombreProducto, imagenProducto, descripcion);
         }
     }
 }
