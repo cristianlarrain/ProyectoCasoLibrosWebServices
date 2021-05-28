@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebfb22b1-d1c1-46c6-84b2-5bcf156267f9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="b353ed73-873a-4ca5-a1f2-17b21f0e1cef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="https://localhost:44394/wsLibros.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="wsLibros.wsdl" MetadataType="Wsdl" ID="d19eb7fa-4af1-47e7-811c-6ec46714982f" SourceId="1" SourceUrl="https://localhost:44394/wsLibros.asmx?wsdl" />
-    <MetadataFile FileName="wsLibros.disco" MetadataType="Disco" ID="eb17d5bd-3673-4da0-8de7-c8521e9aa1db" SourceId="1" SourceUrl="https://localhost:44394/wsLibros.asmx?disco" />
+    <MetadataFile FileName="wsLibros.wsdl" MetadataType="Wsdl" ID="e140f7fc-a931-446c-8040-45d2ffaa6443" SourceId="1" SourceUrl="https://localhost:44394/wsLibros.asmx?wsdl" />
+    <MetadataFile FileName="wsLibros.disco" MetadataType="Disco" ID="66219ade-e15e-443b-a507-fe520f6aff22" SourceId="1" SourceUrl="https://localhost:44394/wsLibros.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

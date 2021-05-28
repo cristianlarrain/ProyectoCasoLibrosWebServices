@@ -2,6 +2,32 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertarLibro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoProducto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imagenProducto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarLibroResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ActualizarLibro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoProducto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="imagenProducto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarLibroResponse">
+        <s:complexType />
+      </s:element>
       <s:element name="ListarLibros">
         <s:complexType />
       </s:element>
@@ -19,13 +45,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="UserDetails" type="tns:UserDetails" />
-      <s:complexType name="UserDetails">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="AccessKey" type="s:string" />
-        </s:sequence>
-        <s:anyAttribute />
-      </s:complexType>
       <s:element name="ConsultarLibro">
         <s:complexType>
           <s:sequence>
@@ -57,42 +76,25 @@
       <s:element name="EliminarLibroResponse">
         <s:complexType />
       </s:element>
-      <s:element name="InsertarLibro">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="codigoProducto" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="imagenProducto" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="InsertarLibroResponse">
-        <s:complexType />
-      </s:element>
-      <s:element name="ActualizarLibro">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="codigoProducto" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="nombreProducto" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="imagenProducto" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="ActualizarLibroResponse">
-        <s:complexType />
-      </s:element>
     </s:schema>
   </wsdl:types>
+  <wsdl:message name="InsertarLibroSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarLibro" />
+  </wsdl:message>
+  <wsdl:message name="InsertarLibroSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarLibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarLibroSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarLibro" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarLibroSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarLibroResponse" />
+  </wsdl:message>
   <wsdl:message name="ListarLibrosSoapIn">
     <wsdl:part name="parameters" element="tns:ListarLibros" />
   </wsdl:message>
   <wsdl:message name="ListarLibrosSoapOut">
     <wsdl:part name="parameters" element="tns:ListarLibrosResponse" />
-  </wsdl:message>
-  <wsdl:message name="ListarLibrosUserDetails">
-    <wsdl:part name="UserDetails" element="tns:UserDetails" />
   </wsdl:message>
   <wsdl:message name="ConsultarLibroSoapIn">
     <wsdl:part name="parameters" element="tns:ConsultarLibro" />
@@ -106,19 +108,15 @@
   <wsdl:message name="EliminarLibroSoapOut">
     <wsdl:part name="parameters" element="tns:EliminarLibroResponse" />
   </wsdl:message>
-  <wsdl:message name="InsertarLibroSoapIn">
-    <wsdl:part name="parameters" element="tns:InsertarLibro" />
-  </wsdl:message>
-  <wsdl:message name="InsertarLibroSoapOut">
-    <wsdl:part name="parameters" element="tns:InsertarLibroResponse" />
-  </wsdl:message>
-  <wsdl:message name="ActualizarLibroSoapIn">
-    <wsdl:part name="parameters" element="tns:ActualizarLibro" />
-  </wsdl:message>
-  <wsdl:message name="ActualizarLibroSoapOut">
-    <wsdl:part name="parameters" element="tns:ActualizarLibroResponse" />
-  </wsdl:message>
   <wsdl:portType name="WsLibrosSoap">
+    <wsdl:operation name="InsertarLibro">
+      <wsdl:input message="tns:InsertarLibroSoapIn" />
+      <wsdl:output message="tns:InsertarLibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLibro">
+      <wsdl:input message="tns:ActualizarLibroSoapIn" />
+      <wsdl:output message="tns:ActualizarLibroSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="ListarLibros">
       <wsdl:input message="tns:ListarLibrosSoapIn" />
       <wsdl:output message="tns:ListarLibrosSoapOut" />
@@ -131,22 +129,31 @@
       <wsdl:input message="tns:EliminarLibroSoapIn" />
       <wsdl:output message="tns:EliminarLibroSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="InsertarLibro">
-      <wsdl:input message="tns:InsertarLibroSoapIn" />
-      <wsdl:output message="tns:InsertarLibroSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="ActualizarLibro">
-      <wsdl:input message="tns:ActualizarLibroSoapIn" />
-      <wsdl:output message="tns:ActualizarLibroSoapOut" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WsLibrosSoap" type="tns:WsLibrosSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertarLibro">
+      <soap:operation soapAction="http://tempuri.org/InsertarLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLibro">
+      <soap:operation soapAction="http://tempuri.org/ActualizarLibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ListarLibros">
       <soap:operation soapAction="http://tempuri.org/ListarLibros" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
-        <soap:header message="tns:ListarLibrosUserDetails" part="UserDetails" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap:body use="literal" />
@@ -170,32 +177,31 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertarLibro">
-      <soap:operation soapAction="http://tempuri.org/InsertarLibro" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ActualizarLibro">
-      <soap:operation soapAction="http://tempuri.org/ActualizarLibro" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WsLibrosSoap12" type="tns:WsLibrosSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertarLibro">
+      <soap12:operation soapAction="http://tempuri.org/InsertarLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLibro">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarLibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="ListarLibros">
       <soap12:operation soapAction="http://tempuri.org/ListarLibros" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
-        <soap12:header message="tns:ListarLibrosUserDetails" part="UserDetails" use="literal" />
       </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
@@ -212,24 +218,6 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarLibro">
       <soap12:operation soapAction="http://tempuri.org/EliminarLibro" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="InsertarLibro">
-      <soap12:operation soapAction="http://tempuri.org/InsertarLibro" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ActualizarLibro">
-      <soap12:operation soapAction="http://tempuri.org/ActualizarLibro" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

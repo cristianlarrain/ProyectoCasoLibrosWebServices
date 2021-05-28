@@ -16,13 +16,26 @@ namespace Presentacion.CasoLibros.wsLibros {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="wsLibros.WsLibrosSoap")]
     public interface WsLibrosSoap {
         
-        // CODEGEN: Se está generando un contrato de mensaje, ya que el mensaje ListarLibrosRequest tiene encabezados.
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarLibros", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarLibro", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        Presentacion.CasoLibros.wsLibros.ListarLibrosResponse ListarLibros(Presentacion.CasoLibros.wsLibros.ListarLibrosRequest request);
+        void InsertarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarLibro", ReplyAction="*")]
+        System.Threading.Tasks.Task InsertarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarLibro", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void ActualizarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarLibro", ReplyAction="*")]
+        System.Threading.Tasks.Task ActualizarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarLibros", ReplyAction="*")]
-        System.Threading.Tasks.Task<Presentacion.CasoLibros.wsLibros.ListarLibrosResponse> ListarLibrosAsync(Presentacion.CasoLibros.wsLibros.ListarLibrosRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataSet ListarLibros();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ListarLibros", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataSet> ListarLibrosAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ConsultarLibro", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -37,100 +50,6 @@ namespace Presentacion.CasoLibros.wsLibros {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EliminarLibro", ReplyAction="*")]
         System.Threading.Tasks.Task EliminarLibroAsync(int codigoProducto);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarLibro", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void InsertarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/InsertarLibro", ReplyAction="*")]
-        System.Threading.Tasks.Task InsertarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarLibro", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        void ActualizarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ActualizarLibro", ReplyAction="*")]
-        System.Threading.Tasks.Task ActualizarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion);
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class UserDetails : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private string accessKeyField;
-        
-        private System.Xml.XmlAttribute[] anyAttrField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Order=0)]
-        public string AccessKey {
-            get {
-                return this.accessKeyField;
-            }
-            set {
-                this.accessKeyField = value;
-                this.RaisePropertyChanged("AccessKey");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAnyAttributeAttribute()]
-        public System.Xml.XmlAttribute[] AnyAttr {
-            get {
-                return this.anyAttrField;
-            }
-            set {
-                this.anyAttrField = value;
-                this.RaisePropertyChanged("AnyAttr");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarLibros", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class ListarLibrosRequest {
-        
-        [System.ServiceModel.MessageHeaderAttribute(Namespace="http://tempuri.org/")]
-        public Presentacion.CasoLibros.wsLibros.UserDetails UserDetails;
-        
-        public ListarLibrosRequest() {
-        }
-        
-        public ListarLibrosRequest(Presentacion.CasoLibros.wsLibros.UserDetails UserDetails) {
-            this.UserDetails = UserDetails;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ListarLibrosResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
-    public partial class ListarLibrosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
-        public System.Data.DataSet ListarLibrosResult;
-        
-        public ListarLibrosResponse() {
-        }
-        
-        public ListarLibrosResponse(System.Data.DataSet ListarLibrosResult) {
-            this.ListarLibrosResult = ListarLibrosResult;
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -160,27 +79,28 @@ namespace Presentacion.CasoLibros.wsLibros {
                 base(binding, remoteAddress) {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        Presentacion.CasoLibros.wsLibros.ListarLibrosResponse Presentacion.CasoLibros.wsLibros.WsLibrosSoap.ListarLibros(Presentacion.CasoLibros.wsLibros.ListarLibrosRequest request) {
-            return base.Channel.ListarLibros(request);
+        public void InsertarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
+            base.Channel.InsertarLibro(codigoProducto, nombreProducto, imagenProducto, descripcion);
         }
         
-        public System.Data.DataSet ListarLibros(Presentacion.CasoLibros.wsLibros.UserDetails UserDetails) {
-            Presentacion.CasoLibros.wsLibros.ListarLibrosRequest inValue = new Presentacion.CasoLibros.wsLibros.ListarLibrosRequest();
-            inValue.UserDetails = UserDetails;
-            Presentacion.CasoLibros.wsLibros.ListarLibrosResponse retVal = ((Presentacion.CasoLibros.wsLibros.WsLibrosSoap)(this)).ListarLibros(inValue);
-            return retVal.ListarLibrosResult;
+        public System.Threading.Tasks.Task InsertarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
+            return base.Channel.InsertarLibroAsync(codigoProducto, nombreProducto, imagenProducto, descripcion);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<Presentacion.CasoLibros.wsLibros.ListarLibrosResponse> Presentacion.CasoLibros.wsLibros.WsLibrosSoap.ListarLibrosAsync(Presentacion.CasoLibros.wsLibros.ListarLibrosRequest request) {
-            return base.Channel.ListarLibrosAsync(request);
+        public void ActualizarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
+            base.Channel.ActualizarLibro(codigoProducto, nombreProducto, imagenProducto, descripcion);
         }
         
-        public System.Threading.Tasks.Task<Presentacion.CasoLibros.wsLibros.ListarLibrosResponse> ListarLibrosAsync(Presentacion.CasoLibros.wsLibros.UserDetails UserDetails) {
-            Presentacion.CasoLibros.wsLibros.ListarLibrosRequest inValue = new Presentacion.CasoLibros.wsLibros.ListarLibrosRequest();
-            inValue.UserDetails = UserDetails;
-            return ((Presentacion.CasoLibros.wsLibros.WsLibrosSoap)(this)).ListarLibrosAsync(inValue);
+        public System.Threading.Tasks.Task ActualizarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
+            return base.Channel.ActualizarLibroAsync(codigoProducto, nombreProducto, imagenProducto, descripcion);
+        }
+        
+        public System.Data.DataSet ListarLibros() {
+            return base.Channel.ListarLibros();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataSet> ListarLibrosAsync() {
+            return base.Channel.ListarLibrosAsync();
         }
         
         public System.Data.DataSet ConsultarLibro(int codigoLibro) {
@@ -197,22 +117,6 @@ namespace Presentacion.CasoLibros.wsLibros {
         
         public System.Threading.Tasks.Task EliminarLibroAsync(int codigoProducto) {
             return base.Channel.EliminarLibroAsync(codigoProducto);
-        }
-        
-        public void InsertarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
-            base.Channel.InsertarLibro(codigoProducto, nombreProducto, imagenProducto, descripcion);
-        }
-        
-        public System.Threading.Tasks.Task InsertarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
-            return base.Channel.InsertarLibroAsync(codigoProducto, nombreProducto, imagenProducto, descripcion);
-        }
-        
-        public void ActualizarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
-            base.Channel.ActualizarLibro(codigoProducto, nombreProducto, imagenProducto, descripcion);
-        }
-        
-        public System.Threading.Tasks.Task ActualizarLibroAsync(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion) {
-            return base.Channel.ActualizarLibroAsync(codigoProducto, nombreProducto, imagenProducto, descripcion);
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿<%@ Page Title="Home Page" 
-    Language="C#" 
-    MasterPageFile="~/Site.Master" 
-    AutoEventWireup="true" 
-    CodeBehind="Default.aspx.cs" 
+﻿<%@ Page Title="Home Page"
+    Language="C#"
+    MasterPageFile="~/Site.Master"
+    AutoEventWireup="true"
+    CodeBehind="Default.aspx.cs"
     Inherits="Presentacion.CasoLibros.Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -19,9 +19,9 @@
     </style>
     <div class="jumbotron">
 
-                <h2>
+        <h2>
             <asp:Image ID="Image2" runat="server" Height="142px" ImageUrl="~/Content/logolibreria.png" Width="141px" />
-            Libreria Virtual</h2>
+            Libreria Virtual.</h2>
 
         <div class="row">
             <div class="col-sm-12 bob">
@@ -29,12 +29,73 @@
                 <asp:TextBox ID="txt_IdCodigo" TextMode="Number" runat="server" Width="223px"></asp:TextBox><br />
                 <br />
                 <asp:Button ID="btn_BuscarLibro" runat="server" Text="Buscar..." Width="227px" OnClick="btn_BuscarLibro_Click" />
+                &nbsp;
                 <br />
                 <asp:Label ID="lbl_Resultado" disabled="disable" runat="server"></asp:Label>
                 <br />
             </div>
 
         </div>
+
+
+        <div id="ShoppingCart">
+
+
+
+                <table style="border: solid 2px;">
+
+                    <tr style="font-weight: bolder;">
+                        <td style="padding: 5px;">Producto</td>
+                        <td style="padding: 5px;">SKU</td>
+                        <td style="padding: 5px;">Cantidad</td>
+                        <td style="padding: 5px;">Precio</td>
+                        <td style="padding: 5px;">Subtotal</td>
+                    </tr>
+
+                    <tr>
+                        <td  style="padding: 5px;">Historia secreta de Chile</td>
+                        <td style="padding: 5px;"><b>1001</b></td>
+                        <td style="padding: 5px; text-align:center;">2</td>
+                        <td style="padding: 5px;">$13.000</td>
+                        <td style="padding: 5px; font-weight: bolder;">$26.000</td>
+                    </tr>
+
+                    <tr>
+                        <td style="padding: 5px;">Papelucho </td>
+                        <td style="padding: 5px;"><b>1002</b></td>
+                        <td style="padding: 5px;  text-align:center;">1</td>
+                        <td style="padding: 5px;">$9.900</td>
+                        <td style="padding: 5px; font-weight: bolder;">$9.900</td>
+                    </tr>
+
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td style="font-weight: bolder;">$35.900</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="5">
+
+
+
+  
+
+            <asp:Button ID="btCarro" runat="server" OnClick="btCarro_Click" Text="Ir a pagar..." />
+
+                        </td>
+                    </tr>
+                </table>
+
+
+
+  
+
+        </div>
+
+
 
         <asp:GridView ID="GridView1" runat="server" CellPadding="4" GridLines="Vertical"
             BackColor="White" BorderColor="#DEDFDE" BorderStyle="Solid" BorderWidth="10px" AutoGenerateColumns="False" Width="100%" ForeColor="Black">
@@ -53,6 +114,7 @@
 
                         <h4><%# Eval("NOMBRE_PRODUCTO") %></h4>
                         <asp:Label runat="server" Font-Bold="true" ForeColor="BlueViolet">SKU: <%# Eval("CODIGO_PRODUCTO") %></asp:Label>
+
                         <p style="font-size: small;"><%# Eval("DESCRIPCION") %></p>
 
                         <asp:Button Text="Comprar" runat="server" />

@@ -5,6 +5,7 @@ using System.Web.Services.Protocols;
 using Datos;
 using ServicioWeb.CasoLibros.Helpers;
 
+
 namespace ServicioWeb.CasoLibros
 {
     /// <summary>
@@ -18,39 +19,11 @@ namespace ServicioWeb.CasoLibros
     {
         public new UserDetails User;
 
-       
-        [WebMethod]
-        [SoapHeader("User")]
-
-        /* listar productos conectados a una base de datos sql server */
-        public DataSet ListarLibros()
-        {      
-            var comando = ConfiguracionDatos.CrearComando();
-            comando.CommandText = "SELECT * FROM PRODUCTOS";
-            DataSet dt = ConfiguracionDatos.CrearDataSet(comando);
-            return dt;
-        }
 
 
         [WebMethod]
-        /* consultar producto por codigo, conectados a una base de datos sql server */
-        public DataSet ConsultarLibro(int codigoLibro)
-        {
-            var comando = ConfiguracionDatos.CrearComando();
-            comando.CommandText = "SELECT * FROM PRODUCTOS WHERE CODIGO_PRODUCTO = '" + codigoLibro + "'";
-            DataSet dt = ConfiguracionDatos.CrearDataSet(comando);
-            return dt;
-        }
 
-        [WebMethod]
-        public void EliminarLibro(int codigoProducto)
-        {
-            var comando = ConfiguracionDatos.CrearComando();
-            comando.CommandText = "DELETE FROM PRODUCTOS WHERE CODIGO_PRODUCTO = " + codigoProducto + " ";
-            ConfiguracionDatos.EjecutarComando(comando);
-        }
 
-        [WebMethod]
         public void InsertarLibro(int codigoProducto, string nombreProducto, string imagenProducto, string descripcion)
         {
             var comando = ConfiguracionDatos.CrearComando();
@@ -67,8 +40,19 @@ namespace ServicioWeb.CasoLibros
             ConfiguracionDatos.EjecutarComando(comando);
         }
 
+        [WebMethod]
 
+        /* listar productos conectados a una base de datos sql server */
+        public DataSet ListarLibros()
+        {
+            var comando = ConfiguracionDatos.CrearComando();
+            comando.CommandText = "SELECT * FROM PRODUCTOS";
+            DataSet dt = ConfiguracionDatos.CrearDataSet(comando);
+            return dt;
+        }
 
+        //[WebMethod]
+        //[SoapHeader("User")]
         //public DataSet ListarLibros()
         //{
         //    try
@@ -97,7 +81,27 @@ namespace ServicioWeb.CasoLibros
 
         //        return null;
         //    }
+        //}
+
+        [WebMethod]
+        /* consultar producto por codigo, conectados a una base de datos sql server */
+        public DataSet ConsultarLibro(int codigoLibro)
+        {
+            var comando = ConfiguracionDatos.CrearComando();
+            comando.CommandText = "SELECT * FROM PRODUCTOS WHERE CODIGO_PRODUCTO = '" + codigoLibro + "'";
+            DataSet dt = ConfiguracionDatos.CrearDataSet(comando);
+            return dt;
+        }
+
+        [WebMethod]
+        public void EliminarLibro(int codigoProducto)
+        {
+            var comando = ConfiguracionDatos.CrearComando();
+            comando.CommandText = "DELETE FROM PRODUCTOS WHERE CODIGO_PRODUCTO = " + codigoProducto + " ";
+            ConfiguracionDatos.EjecutarComando(comando);
+        }
 
     }
+
 }
 
